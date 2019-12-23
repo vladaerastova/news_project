@@ -1,0 +1,28 @@
+{% extends 'admin/master.html' %}
+{% block head_css %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='admin.css') }}">
+{% endblock head_css %}
+{% block body %}
+{% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                <form method="post" action="{{ url_for('admin.approve_decline',post_id=post.id) }}">
+                    {% if post.is_approved %}
+                    <button class="btn pull-right btn-danger" type="submit">Decline</button>
+                    {% else %}
+                    <button class="btn pull-right btn-success" type="submit">Approve</button>
+                    {% endif %}
+                </form>
+            </div>
+
+            <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content|safe }}</p>
+              <a href="{{ url_for('post', post_id=post.id) }}" class="text-muted">Commented {{ post.comments.all()|length }} times</a>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock body%}

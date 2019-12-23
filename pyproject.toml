@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "news_project"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+flask = "^1.1.1"
+celery = "^4.4.0"
+flask-sqlalchemy = "^2.4.1"
+flask_migrate = "^2.5.2"
+flask_bcrypt = "^0.7.1"
+flask_login = "^0.4.1"
+flask_wtf = "^0.14.2"
+flask_security = "^3.0.0"
+flask_admin = "^1.5.4"
+itsdangerous = "^1.1.0"
+sendgrid = "^6.1.0"
+requests = "^2.22.0"
+bleach = "^3.1.0"
+redis = "^3.3.11"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
